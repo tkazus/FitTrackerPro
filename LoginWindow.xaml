@@ -1,0 +1,251 @@
+﻿<Window x:Class="FitTrackerPro.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="FitTracker Pro - Вход"
+        Width="420"
+        Height="520"
+        WindowStartupLocation="CenterScreen"
+        Background="#1E1E1E"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Верхняя панель -->
+        <Border Grid.Row="0" Background="#2D2D30">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0" 
+                           Text="FitTracker Pro" 
+                           FontSize="14" 
+                           FontWeight="Bold" 
+                           Foreground="#4CAF50" 
+                           VerticalAlignment="Center" 
+                           Margin="15,0,0,0"/>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,10,0">
+                    <Button x:Name="MinimizeButton" 
+                            Content="─" 
+                            Width="28" 
+                            Height="28" 
+                            Background="Transparent" 
+                            Foreground="#A0A0A0" 
+                            BorderThickness="0" 
+                            FontSize="14" 
+                            Click="MinimizeButton_Click" 
+                            Cursor="Hand"/>
+                    <Button x:Name="CloseButton" 
+                            Content="✕" 
+                            Width="28" 
+                            Height="28" 
+                            Background="Transparent" 
+                            Foreground="#A0A0A0" 
+                            BorderThickness="0" 
+                            FontSize="12" 
+                            Click="CloseButton_Click" 
+                            Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Основной контент -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Background="#1E1E1E">
+            <Border Margin="30,20,30,20">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Заголовок -->
+                    <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,0,0,20">
+                        <TextBlock Text="FitTracker Pro" 
+                                   FontSize="28" 
+                                   FontWeight="Bold" 
+                                   Foreground="White" 
+                                   HorizontalAlignment="Center"/>
+                        <TextBlock Text="Твой персональный фитнес-трекер" 
+                                   FontSize="12" 
+                                   Foreground="#888888" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="0,5,0,0"/>
+                    </StackPanel>
+
+                    <!-- Вкладки -->
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,20">
+                        <Button x:Name="LoginTab" 
+                                Content="Вход" 
+                                Width="100" 
+                                Height="35" 
+                                Background="#4CAF50" 
+                                Foreground="White" 
+                                BorderThickness="0" 
+                                FontWeight="Bold" 
+                                FontSize="14" 
+                                Click="LoginTab_Click" 
+                                Cursor="Hand"/>
+                        <Button x:Name="RegisterTab" 
+                                Content="Регистрация" 
+                                Width="100" 
+                                Height="35" 
+                                Background="#3E3E42" 
+                                Foreground="#A0A0A0" 
+                                BorderThickness="0" 
+                                FontWeight="Bold" 
+                                FontSize="14" 
+                                Click="RegisterTab_Click" 
+                                Cursor="Hand"/>
+                    </StackPanel>
+
+                    <!-- Панель входа -->
+                    <StackPanel Grid.Row="2" x:Name="LoginPanel" Margin="0,5,0,0">
+                        <TextBlock Text="Имя пользователя" 
+                                   Foreground="#888888" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,5"/>
+                        <TextBox x:Name="LoginUsername" 
+                                 Height="35" 
+                                 Background="#2D2D30" 
+                                 Foreground="White" 
+                                 BorderBrush="#3E3E42" 
+                                 BorderThickness="1" 
+                                 FontSize="14" 
+                                 Padding="10,5,10,5"
+                                 VerticalContentAlignment="Center"
+                                 Margin="0,0,0,15"/>
+
+                        <TextBlock Text="Пароль" 
+                                   Foreground="#888888" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,5"/>
+                        <PasswordBox x:Name="LoginPassword" 
+                                     Height="35" 
+                                     Background="#2D2D30" 
+                                     Foreground="White" 
+                                     BorderBrush="#3E3E42" 
+                                     BorderThickness="1" 
+                                     FontSize="14" 
+                                     Padding="10,5,10,5"
+                                     VerticalContentAlignment="Center"
+                                     Margin="0,0,0,20"
+                                     KeyDown="LoginPassword_KeyDown"/>
+
+                        <Button x:Name="LoginButton" 
+                                Content="Войти" 
+                                Height="40" 
+                                Background="#4CAF50" 
+                                Foreground="White" 
+                                BorderThickness="0" 
+                                FontWeight="Bold" 
+                                FontSize="14" 
+                                Click="LoginButton_Click" 
+                                Cursor="Hand"/>
+
+                        <TextBlock x:Name="LoginMessage" 
+                                   Foreground="#E81123" 
+                                   FontSize="12" 
+                                   Margin="0,10,0,0" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+
+                    <!-- Панель регистрации -->
+                    <StackPanel Grid.Row="2" x:Name="RegisterPanel" Visibility="Collapsed" Margin="0,5,0,0">
+                        <TextBlock Text="Имя пользователя" 
+                                   Foreground="#888888" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,5"/>
+                        <TextBox x:Name="RegisterUsername" 
+                                 Height="35" 
+                                 Background="#2D2D30" 
+                                 Foreground="White" 
+                                 BorderBrush="#3E3E42" 
+                                 BorderThickness="1" 
+                                 FontSize="14" 
+                                 Padding="10,5,10,5"
+                                 VerticalContentAlignment="Center"
+                                 Margin="0,0,0,12"/>
+
+                        <TextBlock Text="Email" 
+                                   Foreground="#888888" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,5"/>
+                        <TextBox x:Name="RegisterEmail" 
+                                 Height="35" 
+                                 Background="#2D2D30" 
+                                 Foreground="White" 
+                                 BorderBrush="#3E3E42" 
+                                 BorderThickness="1" 
+                                 FontSize="14" 
+                                 Padding="10,5,10,5"
+                                 VerticalContentAlignment="Center"
+                                 Margin="0,0,0,12"/>
+
+                        <TextBlock Text="Пароль" 
+                                   Foreground="#888888" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,5"/>
+                        <PasswordBox x:Name="RegisterPassword" 
+                                     Height="35" 
+                                     Background="#2D2D30" 
+                                     Foreground="White" 
+                                     BorderBrush="#3E3E42" 
+                                     BorderThickness="1" 
+                                     FontSize="14" 
+                                     Padding="10,5,10,5"
+                                     VerticalContentAlignment="Center"
+                                     Margin="0,0,0,12"/>
+
+                        <TextBlock Text="Подтверждение пароля" 
+                                   Foreground="#888888" 
+                                   FontSize="12" 
+                                   FontWeight="Bold" 
+                                   Margin="0,0,0,5"/>
+                        <PasswordBox x:Name="RegisterConfirmPassword" 
+                                     Height="35" 
+                                     Background="#2D2D30" 
+                                     Foreground="White" 
+                                     BorderBrush="#3E3E42" 
+                                     BorderThickness="1" 
+                                     FontSize="14" 
+                                     Padding="10,5,10,5"
+                                     VerticalContentAlignment="Center"
+                                     Margin="0,0,0,20"/>
+
+                        <Button x:Name="RegisterButton" 
+                                Content="Зарегистрироваться" 
+                                Height="40" 
+                                Background="#007ACC" 
+                                Foreground="White" 
+                                BorderThickness="0" 
+                                FontWeight="Bold" 
+                                FontSize="14" 
+                                Click="RegisterButton_Click" 
+                                Cursor="Hand"/>
+
+                        <TextBlock x:Name="RegisterMessage" 
+                                   Foreground="#E81123" 
+                                   FontSize="12" 
+                                   Margin="0,10,0,0" 
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</Window>
